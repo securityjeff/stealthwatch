@@ -1,7 +1,8 @@
-jeff@ona-8295e4:/$ cat support.py
 #!/usr/bin/env python
 #Stealthwatch Cloud Sensor Support Script
 #Author: Jeff Moncrief, 3/2019
+#Instructions:  Run this script on the sensor and send the output and capture.pcap to your SWC representative
+
 import subprocess
 import os
 
@@ -55,8 +56,8 @@ def pusher_func():
 
 #Packet Capture Command
 
-print "*** Performing TCPDump"
-os.popen("sudo -S tcpdump -w capture.pcap -c 10 udp", 'w').write("mypassword")
+print "*** Performing TCPDump, Please wait a few minutes..."
+os.popen("sudo -S tcpdump -w capture.pcap -c 1000 udp", 'w').write("mypassword")
 
 #Main Function to Call All Functions
 def main():
@@ -68,4 +69,3 @@ def main():
     pusher_func()
 
 main()
-jeff@ona-8295e4:/$
