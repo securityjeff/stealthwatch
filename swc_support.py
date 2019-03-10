@@ -11,6 +11,9 @@ def uname_func():
     uname_arg = "-a"
     print "*** Gathering system information with %s command:\n" % uname
     f = open("support.txt", "w")
+    f.write("*** Gathering system information with %s command *** \r\n")
+    f.write("-------------------------------------------------------------------------------- \r\n")
+    f.write(" \r\n")
     subprocess.call([uname, uname_arg], stdout=f)
 
 #Disk Information
@@ -20,6 +23,9 @@ def disk_func():
     diskspace_arg = "-h"
     print "*** Gathering diskspace information %s command:\n" % diskspace
     f = open("support.txt", "a+")
+    f.write("*** Gathering system information with df command *** \r\n")
+    f.write("-------------------------------------------------------------------------------- \r\n")
+    f.write(" \r\n")
     subprocess.call([diskspace, diskspace_arg], stdout=f)
 
 #Cloud Connectivity Test
@@ -29,6 +35,9 @@ def connection_func():
     http_arg = "https://sensor.ext.obsrvbl.com"
     print "*** Gathering cloud connectivity information %s command:\n" % http_command
     f = open("support.txt", "a+")
+    f.write("*** Gathering system information with curl command *** \r\n")
+    f.write("-------------------------------------------------------------------------------- \r\n")
+    f.write(" \r\n")
     subprocess.call([http_command, http_arg], stdout=f)
 
 #IPTables Output
@@ -38,6 +47,9 @@ def iptables_func():
     iptables_arg = "-L"
     print "*** Gathering IPTables output with %s command:\n" % iptables
     f = open("support.txt", "a+")
+    f.write("*** Gathering system information with iptables command *** \r\n")
+    f.write("-------------------------------------------------------------------------------- \r\n")
+    f.write(" \r\n")
     subprocess.call([iptables, iptables_arg], stdout=f)
 
 #Config.local Output
@@ -47,6 +59,9 @@ def config_func():
     config_arg = "/opt/obsrvbl-ona/config.local"
     print "*** Gathering config.local config with %s command:\n, BLANK is OK" % config
     f = open("support.txt", "a+")
+    f.write("*** Gathering system information with cat command *** \r\n")
+    f.write("-------------------------------------------------------------------------------- \r\n")
+    f.write(" \r\n")
     subprocess.call([config, config_arg], stdout=f)
 
 #ONA Pusher File Log
@@ -56,12 +71,15 @@ def pusher_func():
     pusher_arg = "/opt/obsrvbl-ona/logs/ona_service/ona-pna-pusher.log"
     print "*** Gathering ONA Pusher log with %s command:\n" % pusher
     f = open("support.txt", "a+")
+    f.write("*** Gathering system information with tail command *** \r\n")
+    f.write("-------------------------------------------------------------------------------- \r\n")
+    f.write(" \r\n")
     subprocess.call([pusher, pusher_arg], stdout=f)
 
 #Packet Capture Command
 
 print "*** Performing TCPDump"
-os.popen("sudo -S tcpdump -w capture.pcap -c 1000 udp", 'w').write("mypassword")
+os.popen("sudo -S tcpdump -w capture.pcap -c 10 udp", 'w').write("mypassword")
 
 #TAR files into Support bundle files
 def bundle_func():
@@ -80,3 +98,4 @@ def main():
     bundle_func()
 
 main()
+
