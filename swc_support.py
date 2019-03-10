@@ -79,7 +79,7 @@ def pusher_func():
 #Packet Capture Command
 
 print "*** Performing TCPDump"
-os.popen("sudo -S tcpdump -w capture.pcap -c 10 udp", 'w').write("mypassword")
+os.popen("sudo -S tcpdump -w capture.pcap -c 1000 udp", 'w').write("mypassword")
 
 #TAR files into Support bundle files
 def bundle_func():
