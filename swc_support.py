@@ -59,19 +59,32 @@ def config_func():
     config_arg = "/opt/obsrvbl-ona/config.local"
     print "*** Gathering config.local config with %s command:\n, BLANK is OK" % config
     f = open("support.txt", "a+")
-    f.write("*** Gathering system information with cat command *** \r\n")
+    f.write("*** Gathering system information from config.local with cat command *** \r\n")
     f.write("-------------------------------------------------------------------------------- \r\n")
     f.write(" \r\n")
     subprocess.call([config, config_arg], stdout=f)
+   
+#Config.auto Output
+def config_func():
+
+    config = "cat"
+    config_arg = "/opt/obsrvbl-ona/config.auto"
+    print "*** Gathering config.local config with %s command:\n, BLANK is OK" % config
+    f = open("support.txt", "a+")
+    f.write("*** Gathering system information from config.auto with cat command *** \r\n")
+    f.write("-------------------------------------------------------------------------------- \r\n")
+    f.write(" \r\n")
+    subprocess.call([config, config_arg], stdout=f)
+    
 
 #ONA Pusher File Log
 def pusher_func():
 
-    pusher = "tail"
+    pusher = "cat"
     pusher_arg = "/opt/obsrvbl-ona/logs/ona_service/ona-pna-pusher.log"
     print "*** Gathering ONA Pusher log with %s command:\n" % pusher
     f = open("support.txt", "a+")
-    f.write("*** Gathering system information with tail command *** \r\n")
+    f.write("*** Gathering system information from ona-pusher with cat command *** \r\n")
     f.write("-------------------------------------------------------------------------------- \r\n")
     f.write(" \r\n")
     subprocess.call([pusher, pusher_arg], stdout=f)
